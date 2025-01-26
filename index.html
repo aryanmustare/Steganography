@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steganography Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Steganography Tool</h1>
+            <div class="button-container">
+                <span id="encode-btn" class="action-btn active" onclick="showEncode()">Encode</span>
+                <span id="decode-btn" class="action-btn" onclick="showDecode()">Decode</span>
+            </div>
+        </div>
+        <div id="encode-section" class="section fade-in">
+            <h2>Encode Text into Image</h2>
+            <label for="encode-image" class="file-upload-label">
+                Click to Upload Image
+            </label>
+            <p>(upload good photo)</p>
+            <input type="file" id="encode-image" accept="image/*" onchange="previewImage(event)">
+            <div class="image-preview">
+                <img id="image-preview" src="" alt="Image Preview" style="display:none;">
+            </div>
+            <textarea id="text-input" placeholder="Enter text to encode into image..."></textarea>
+            
+            
+            <input type="text" id="encryption-key" placeholder="Enter encryption key (optional)">
+            
+            <button onclick="encodeText()" class="action-btn">Encode Text</button>
+            <a id="download-link" style="display:none;" href="" download="encoded-image.png">Download Encoded Image</a>
+        </div>
+
+        <div id="decode-section" class="section fade-in" style="display:none;">
+            <h2>Decode Text from Image</h2>
+            <label for="decode-image" class="file-upload-label">
+                Click to Upload Image
+            </label>
+            <input type="file" id="decode-image" accept="image/*" onchange="previewImage(event)">
+            <div class="image-preview">
+                <img id="decode-image-preview" src="" alt="Image Preview" style="display:none;">
+            </div>
+
+            <input type="text" id="decode-encryption-key" placeholder="Enter encryption key (optional)">
+            
+            <button onclick="decodeText()" class="action-btn">Decode Text</button>
+            <textarea id="decoded-text" readonly placeholder="Decoded text will appear here..."></textarea>
+        </div>
+
+        <div id="loading-spinner" class="spinner" style="display:none;">Loading...</div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
